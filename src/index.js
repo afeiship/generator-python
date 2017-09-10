@@ -1,6 +1,6 @@
 import nx from 'next-js-core2';
 
-export default function(inHttp, inConfig){
+function httpCurdConfg(inHttp, inConfig){
   const { APIS } = inConfig;
   nx.each(APIS.items, (key, item) => {
     this[key] = function (inData) {
@@ -13,3 +13,6 @@ export default function(inHttp, inConfig){
     };
   });
 };
+
+module.exports = httpCurdConfg;
+export default httpCurdConfg;

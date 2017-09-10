@@ -4,7 +4,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-exports.default = function (inHttp, inConfig) {
+var _nextJsCore = require('next-js-core2');
+
+var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function httpCurdConfg(inHttp, inConfig) {
   var _this = this;
 
   var APIS = inConfig.APIS;
@@ -21,10 +27,5 @@ exports.default = function (inHttp, inConfig) {
   });
 };
 
-var _nextJsCore = require('next-js-core2');
-
-var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-;
+module.exports = httpCurdConfg;
+exports.default = httpCurdConfg;
