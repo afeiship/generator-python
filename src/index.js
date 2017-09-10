@@ -1,18 +1,19 @@
 import nx from 'next-js-core2';
 
-function httpCurdConfg(inHttp, inConfig){
-  const { APIS } = inConfig;
-  nx.each(APIS.items, (key, item) => {
-    this[key] = function (inData) {
+function httpCurdConfg(inApiContext, inHttp, inConfig){
+  const { items, baseUrl } = inConfig;
+  nx.each(items, (key, item) => {
+    inApiContext[key] = function (inData) {
       const action = String(item[0]).toLocaleLowerCase();
       let apiPath = item[1];
       if(apiPath.indexOf('{') > -1){
         apiPath = nx.tmpl( apiPath, inData );
       }
-      return inHttp[action](`${APIS.baseUrl}${apiPath}`, inData);
+      return inHttp[action](`${baseUrl}${apiPath}`, inData);
     };
   });
 };
+
 
 module.exports = httpCurdConfg;
 export default httpCurdConfg;
