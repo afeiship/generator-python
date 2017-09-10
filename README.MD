@@ -42,14 +42,6 @@ const MyHttp = nx.declare({
     },
     error: function (inError) {
       //todo: search error:
-      const {message, code} = inError.response.data;
-      AppBase.message(message || code, 'error');
-      AppBase.$.memory = {searching: false};
-      AppBase.$.session = {
-        search_result: {
-          data: []
-        }
-      };
     }
   }
 });
