@@ -7,14 +7,13 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = function (inHttp, inConfig) {
   var _this = this;
 
-  var _inOptions = inOptions,
-      APIS = _inOptions.APIS;
+  var APIS = inConfig.APIS;
 
   _nextJsCore2.default.each(APIS.items, function (key, item) {
     _this[key] = function (inData) {
       var action = String(item[0]).toLocaleLowerCase();
       var apiPath = item[1];
-      if (apiPath.indexOf('{') === -1) {
+      if (apiPath.indexOf('{') > -1) {
         apiPath = _nextJsCore2.default.tmpl(apiPath, inData);
       }
       return inHttp[action]('' + APIS.baseUrl + apiPath, inData);
