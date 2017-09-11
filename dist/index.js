@@ -10,7 +10,7 @@ var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function httpCurdConfg(inApiContext, inHttp, inConfig) {
+function httpRestConfg(inApiContext, inHttp, inConfig) {
   var items = inConfig.items,
       baseUrl = inConfig.baseUrl;
 
@@ -26,5 +26,5 @@ function httpCurdConfg(inApiContext, inHttp, inConfig) {
   });
 };
 
-module.exports = httpCurdConfg;
-exports.default = httpCurdConfg;
+module.exports = httpRestConfg;
+exports.default = httpRestConfg;

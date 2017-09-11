@@ -1,9 +1,9 @@
 {
-  "name": "http-curd-config",
+  "name": "http-rest-config",
   "version": "0.0.1",
-  "description": "A simple curd config for react project.",
+  "description": "A simple rest config for react project.",
   "main": "dist/index.js",
-  "repository": "git@github.com:afeiship/http-curd-config.git",
+  "repository": "git@github.com:afeiship/http-rest-config.git",
   "author": "feizheng <1290657123@qq.com>",
   "license": "MIT",
   "scripts": {

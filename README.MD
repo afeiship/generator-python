@@ -1,5 +1,5 @@
-# http-curd-config
-> A simple curd config for react project.
+# http-rest-config
+> A simple rest config for react project.
 
 ## expamle http:
 ```js
@@ -73,7 +73,7 @@ static APIS = {
 
 ## usage:
 ```js
-import httpCurdConfig from 'http-curd-config';
+import httpCurdConfig from 'http-rest-config';
 
 export default nx.declare({
   statics: {
