@@ -1,4 +1,6 @@
 import nx from 'next-js-core2';
+import 'next-tmpl';
+
 
 function httpRestConfg(inApiContext, inHttp, inConfig){
   const { items, baseUrl } = inConfig;

@@ -8,6 +8,8 @@ var _nextJsCore = require('next-js-core2');
 
 var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
 
+require('next-tmpl');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function httpRestConfg(inApiContext, inHttp, inConfig) {
