@@ -1,8 +1,9 @@
 import nx from 'next-js-core2';
+import 'next-tmpl';
 
 const SEPARATOR = '{';
 
-function httpCurdConfg(inApiContext, inHttp, inConfig){
+function httpRestConfg(inApiContext, inHttp, inConfig){
   const { items, baseUrl } = inConfig;
   nx.each(items, (key, item) => {
     inApiContext[key] = function (inData, inOptions) {
@@ -17,5 +18,5 @@ function httpCurdConfg(inApiContext, inHttp, inConfig){
 };
 
 
-module.exports = httpCurdConfg;
-export default httpCurdConfg;
+module.exports = httpRestConfg;
+export default httpRestConfg;
