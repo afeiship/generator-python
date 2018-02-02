@@ -20,7 +20,7 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
 
   _nextJsCore2.default.each(items, function (key, item) {
     inApiContext[key] = function (inData, inOptions) {
-      var data = Array.isArray(inData) ? _nextJsCore2.default.mix.apply(null, inData) : inData;
+      var data = Array.isArray(inData) ? _nextJsCore2.default.mix.apply(_nextJsCore2.default, inData) : inData;
       var action = String(item[0]).toLocaleLowerCase();
       var apiPath = item[1];
       if (apiPath.indexOf(SEPARATOR) > -1) {

@@ -7,7 +7,7 @@ function httpRestConfg(inApiContext, inHttp, inConfig){
   const { items, baseUrl } = inConfig;
   nx.each(items, (key, item) => {
     inApiContext[key] = function (inData, inOptions) {
-      const data = Array.isArray(inData) ? nx.mix.apply(null, inData) : inData;
+      const data = Array.isArray(inData) ? nx.mix.apply(nx, inData) : inData;
       const action = String(item[0]).toLocaleLowerCase();
       let apiPath = item[1];
       if(apiPath.indexOf(SEPARATOR) > -1){
