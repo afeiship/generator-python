@@ -20,12 +20,13 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
 
   _nextJsCore2.default.each(items, function (key, item) {
     inApiContext[key] = function (inData, inOptions) {
+      var data = Array.isArray(inData) ? _nextJsCore2.default.mix.apply(null, inData) : inData;
       var action = String(item[0]).toLocaleLowerCase();
       var apiPath = item[1];
       if (apiPath.indexOf(SEPARATOR) > -1) {
-        apiPath = _nextJsCore2.default.tmpl(apiPath, inData);
+        apiPath = _nextJsCore2.default.tmpl(apiPath, data);
       }
-      return inHttp[action]('' + baseUrl + apiPath, inData, inOptions);
+      return inHttp[action]('' + baseUrl + apiPath, data, inOptions);
     };
   });
 };
