@@ -27,7 +27,7 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
         if (apiPath.indexOf(SEPARATOR) > -1) {
           apiPath = _nextJsCore2.default.tmpl(apiPath, data);
         }
-        return inHttp[action]('' + baseUrl + apiPath, data, inOptions);
+        return inHttp[action]('' + baseUrl + context + apiPath, data, inOptions);
       };
     });
   });
