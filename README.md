@@ -57,16 +57,16 @@ static APIS = {
      * auth
      */
     '/api/v1':{
-      'signin': ['POST', '/auth/signin'],
-      'reqister': ['POST', '/auth/register'],
+      'signin': ['post', '/auth/signin'],
+      'reqister': ['post', '/auth/register'],
     },
     /**
      * Common部分
      * sms/reset
      */
     '/api/common':{
-      'sms': ['POST', '/auth/sms'],
-      'reset': ['POST', '/auth/resetpassword'],
+      'sms': ['get', '/auth/sms'],
+      'reset': ['post', '/auth/resetpassword'],
     }
   }
 };
