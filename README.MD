@@ -50,34 +50,36 @@ const MyHttp = nx.declare({
 ## example config:
 ```js
 static APIS = {
-  baseUrl: '/api/v1',
+  baseUrl: `//${location.host}`,
   items: {
     /**
      * 登录部分
      * auth
      */
-    'signin': ['POST', '/auth/signin'],
-    'reqister': ['POST', '/auth/register'],
-    'sms': ['POST', '/auth/sms'],
-    'reset': ['POST', '/auth/resetpassword'],
+    '/api/v1':{
+      'signin': ['POST', '/auth/signin'],
+      'reqister': ['POST', '/auth/register'],
+    },
     /**
-     * 订单及支付
-     * trades
+     * Common部分
+     * sms/reset
      */
-    'carts': ['GET', '/trades/carts'],
-    'delete_one': ['DELETE', '/trades/carts/{id}']
+    '/api/common':{
+      'sms': ['POST', '/auth/sms'],
+      'reset': ['POST', '/auth/resetpassword'],
+    }
   }
 };
 ```
 
 ## usage:
 ```js
-import httpCurdConfig from 'http-rest-config';
+import httpConfig from 'http-rest-config';
 
 export default nx.declare({
   statics: {
     init () {
-      httpCurdConfig(this, MyHttp, APIS);
+      httpConfig(this, MyHttp, APIS);
     }
   }
 });
