@@ -28,6 +28,7 @@
     "babel-register": "^6.0.0"
   },
   "dependencies": {
+    "next-content-type": "github:afeiship/next-content-type",
     "next-js-core2": "github:afeiship/next-js-core2",
     "next-tmpl": "github:afeiship/next-tmpl"
   }
