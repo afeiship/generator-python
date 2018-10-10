@@ -17,10 +17,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var SEPARATOR = '{';
 
 function httpRestConfg(inApiContext, inHttp, inConfig) {
-  var baseUrl = '//' + location.host;
-  var request = inConfig.request,
+  var url = inConfig.url,
+      request = inConfig.request,
       items = inConfig.items;
 
+  var baseUrl = url || '//' + location.host;
 
   items.forEach(function (item) {
     var _request = item.request;
