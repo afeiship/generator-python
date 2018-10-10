@@ -5,8 +5,9 @@ import 'next-content-type';
 const SEPARATOR = '{';
 
 function httpRestConfg(inApiContext, inHttp, inConfig) {
-  const baseUrl = `//${location.host}`;
-  const { request, items } = inConfig;
+
+  const { url, request, items } = inConfig;
+  const baseUrl = url || `//${location.host}`;
 
   items.forEach(function(item){
     const _request = item.request;
