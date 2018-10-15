@@ -8,6 +8,10 @@ var _nextJsCore = require('next-js-core2');
 
 var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
 
+var _nextDataTransform = require('next-data-transform');
+
+var _nextDataTransform2 = _interopRequireDefault(_nextDataTransform);
+
 require('next-tmpl');
 
 require('next-content-type');
@@ -34,7 +38,8 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
         var action = String(_item[0]).toLowerCase();
         var requestData = _request || request;
         var context = requestData[0];
-        var contentType = _nextJsCore2.default.contentType(requestData[1]);
+        var dataType = requestData[1];
+        var contentType = _nextJsCore2.default.contentType(dataType);
         var options = _nextJsCore2.default.mix({
           headers: {
             'Content-Type': contentType
@@ -46,7 +51,7 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
           apiPath = _nextJsCore2.default.tmpl(apiPath, data);
         }
 
-        return inHttp[action]('' + (_url || baseUrl) + context + apiPath, data, options);
+        return inHttp[action]('' + (_url || baseUrl) + context + apiPath, _nextDataTransform2.default[dataType](data), options);
       };
     });
   });
