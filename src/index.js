@@ -12,6 +12,7 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
   items.forEach(function(item){
     const _request = item.request;
     const _items = item.items;
+    const _url = item.url;
 
     nx.each(_items, function (key, _item) {
       inApiContext[key] = function (inData, inOptions) {
@@ -31,7 +32,7 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
           apiPath = nx.tmpl(apiPath, data);
         }
 
-        return inHttp[action](`${baseUrl}${context}${apiPath}`, data, options);
+        return inHttp[action](`${_url || baseUrl}${context}${apiPath}`, data, options);
       };
     })
   });

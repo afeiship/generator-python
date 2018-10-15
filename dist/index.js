@@ -26,6 +26,7 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
   items.forEach(function (item) {
     var _request = item.request;
     var _items = item.items;
+    var _url = item.url;
 
     _nextJsCore2.default.each(_items, function (key, _item) {
       inApiContext[key] = function (inData, inOptions) {
@@ -45,7 +46,7 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
           apiPath = _nextJsCore2.default.tmpl(apiPath, data);
         }
 
-        return inHttp[action]('' + baseUrl + context + apiPath, data, options);
+        return inHttp[action]('' + (_url || baseUrl) + context + apiPath, data, options);
       };
     });
   });
