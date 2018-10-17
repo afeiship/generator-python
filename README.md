@@ -7,15 +7,6 @@ import nx from 'next-js-core2';
 import NxAxios from 'next-axios';
 const MyHttp = nx.declare({
   extends: NxAxios,
-  statics: {
-    instance: null,
-    getInstance: function () {
-      if (!MyHttp.instance) {
-        MyHttp.instance = new MyHttp();
-      }
-      return MyHttp.instance;
-    }
-  },
   methods: {
     getBearerToken: function () {
       const {login} = AppBase.$.session;
