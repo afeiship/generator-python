@@ -49,26 +49,33 @@ const MyHttp = nx.declare({
 
 ## example config:
 ```js
-static APIS = {
-  baseUrl: `//${location.host}`,
-  items: {
-    /**
-     * 登录部分
-     * auth
-     */
-    '/api/v1':{
-      'signin': ['post', '/auth/signin'],
-      'reqister': ['post', '/auth/register'],
+export default {
+  url: 'https://app.demo.com',
+  request: ['/backend', 'urlencode'],
+  items: [
+    {
+      items: {
+        'login':  ['post', '/adminUser/login'],
+        'logout': ['post', '/adminUser/logout']
+      }
     },
-    /**
-     * Common部分
-     * sms/reset
-     */
-    '/api/common':{
-      'sms': ['get', '/auth/sms'],
-      'reset': ['post', '/auth/resetpassword'],
+    {
+      request: ['/admin', 'json'],
+      items: {
+        'article_create': ['post', '/article/create'],
+        'article_update': ['post', '/article/update'],
+        'article_page':   ['get', '/article/page'],
+      }
+    },
+    {
+      request: ['/backend/pmall', 'json'],
+      items: {
+        'article_create': ['post', '/article/create'],
+        'article_update': ['post', '/article/update'],
+        'article_page':   ['get', '/article/page'],
+      }
     }
-  }
+  ]
 };
 ```
 
