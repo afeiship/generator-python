@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _nextJsCore = require('next-js-core2');
 
 var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
@@ -37,8 +39,11 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
         var data = Array.isArray(inData) ? _nextJsCore2.default.mix.apply(_nextJsCore2.default, inData) : inData;
         var action = String(_item[0]).toLowerCase();
         var requestData = _request || request;
-        var context = requestData[0];
-        var dataType = requestData[1];
+
+        var _requestData = _slicedToArray(requestData, 2),
+            context = _requestData[0],
+            dataType = _requestData[1];
+
         var contentType = _nextJsCore2.default.contentType(dataType);
         var options = _nextJsCore2.default.mix({
           headers: {
@@ -55,21 +60,7 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
       };
     });
   });
-
-  // nx.each(items, (context, apis) => {
-  //   nx.each(apis, (key, item) => {
-  //     inApiContext[key] = function (inData, inOptions) {
-  //       const data = Array.isArray(inData) ? nx.mix.apply(nx, inData) : inData;
-  //       const action = String(item[0]).toLowerCase();
-  //       let apiPath = item[1];
-  //       if (apiPath.indexOf(SEPARATOR) > -1) {
-  //         apiPath = nx.tmpl(apiPath, data);
-  //       }
-  //       return inHttp[action](`${baseUrl}${context}${apiPath}`, data, inOptions);
-  //     };
-  //   })
-  // });
-};
+}
 
 module.exports = httpRestConfg;
 exports.default = httpRestConfg;
