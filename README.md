@@ -8,7 +8,7 @@ import NxAxios from 'next-axios';
 const MyHttp = nx.declare({
   extends: NxAxios,
   methods: {
-    getBearerToken: function () {
+    getToken: function () {
       const {login} = AppBase.$.session;
       if (login) {
         return 'Bearer ' + login.token;
@@ -17,7 +17,7 @@ const MyHttp = nx.declare({
     },
     setRequestInterceptor: function () {
       this.axios.interceptors.request.use((config) => {
-        const bearerToken = this.getBearerToken();
+        const bearerToken = this.getToken();
         bearerToken && nx.mix(config.headers.common, {Authorization: bearerToken});
         return config;
       });
