@@ -6,13 +6,13 @@ import 'next-content-type';
 const SEPARATOR = '{';
 
 function httpRestConfg(inApiContext, inHttp, inConfig) {
-  const { url, request, items } = inConfig;
-  const baseUrl = url || `//${location.host}`;
+  const { host, request, items } = inConfig;
+  const baseUrl = host || `//${location.host}`;
 
   items.forEach(function(item) {
     const _request = item.request;
     const _items = item.items;
-    const _url = item.url;
+    const _url = item.host;
 
     nx.each(_items, function(key, _item) {
       inApiContext[key] = function(inData, inOptions) {

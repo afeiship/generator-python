@@ -23,16 +23,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var SEPARATOR = '{';
 
 function httpRestConfg(inApiContext, inHttp, inConfig) {
-  var url = inConfig.url,
+  var host = inConfig.host,
       request = inConfig.request,
       items = inConfig.items;
 
-  var baseUrl = url || '//' + location.host;
+  var baseUrl = host || '//' + location.host;
 
   items.forEach(function (item) {
     var _request = item.request;
     var _items = item.items;
-    var _url = item.url;
+    var _url = item.host;
 
     _nextJsCore2.default.each(_items, function (key, _item) {
       inApiContext[key] = function (inData, inOptions) {
