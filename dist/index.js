@@ -45,16 +45,8 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
             dataType = _requestData[1];
 
         var contentType = _nextJsCore2.default.contentType(dataType);
-        var options = _nextJsCore2.default.mix({
-          headers: {
-            'Content-Type': contentType
-          }
-        }, inOptions);
-
-        var apiPath = _item[1];
-        if (apiPath.indexOf(SEPARATOR) > -1) {
-          apiPath = _nextJsCore2.default.tmpl(apiPath, data);
-        }
+        var apiPath = _item[1].indexOf(SEPARATOR) > -1 ? _item[1] : _nextJsCore2.default.tmpl(_item[1], data);
+        var options = _nextJsCore2.default.mix({ headers: { 'Content-Type': contentType } }, inOptions);
 
         return inHttp[action]('' + (_url || baseUrl) + context + apiPath, _nextDataTransform2.default[dataType](data), options);
       };
