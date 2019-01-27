@@ -14,9 +14,13 @@ var _nextDataTransform = require('next-data-transform');
 
 var _nextDataTransform2 = _interopRequireDefault(_nextDataTransform);
 
-require('next-tmpl');
+var _nextTmpl = require('next-tmpl');
 
-require('next-content-type');
+var _nextTmpl2 = _interopRequireDefault(_nextTmpl);
+
+var _nextContentType = require('next-content-type');
+
+var _nextContentType2 = _interopRequireDefault(_nextContentType);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44,8 +48,8 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
             context = _requestData[0],
             dataType = _requestData[1];
 
-        var contentType = _nextJsCore2.default.contentType(dataType);
-        var apiPath = _item[1].indexOf(SEPARATOR) > -1 ? _item[1] : _nextJsCore2.default.tmpl(_item[1], data);
+        var contentType = (0, _nextContentType2.default)(dataType);
+        var apiPath = _item[1].indexOf(SEPARATOR) > -1 ? _item[1] : (0, _nextTmpl2.default)(_item[1], data);
         var options = _nextJsCore2.default.mix({ headers: { 'Content-Type': contentType } }, inOptions);
 
         return inHttp[action]('' + (_url || baseUrl) + context + apiPath, _nextDataTransform2.default[dataType](data), options);
