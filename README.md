@@ -41,7 +41,7 @@ const MyHttp = nx.declare({
 ## example config:
 ```js
 export default {
-  url: 'https://app.demo.com',
+  host: 'https://app.demo.com',
   request: ['/backend', 'urlencode'],
   items: [
     {
