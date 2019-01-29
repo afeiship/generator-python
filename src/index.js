@@ -21,7 +21,7 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
         const requestData = _request || request;
         const [context, dataType] = requestData;
         const contentType = nxContentType(dataType);
-        const apiPath = _item[1].indexOf(SEPARATOR) > -1 ? _item[1] : nxTmpl(_item[1], data);
+        const apiPath = _item[1].indexOf(SEPARATOR) > -1 ? nxTmpl(_item[1], data) : _item[1];
         const options = nx.mix({ headers: { 'Content-Type': contentType } }, inOptions);
 
         return inHttp[action](
