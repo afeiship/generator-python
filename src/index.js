@@ -3,8 +3,6 @@ import NxDataTransform from 'next-data-transform';
 import nxTmpl from 'next-tmpl';
 import nxContentType from 'next-content-type';
 
-const SEPARATOR = '{';
-
 function httpRestConfg(inApiContext, inHttp, inConfig) {
   const { host, request, items } = inConfig;
   const baseUrl = host || `//${location.host}`;
@@ -21,7 +19,7 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
         const requestData = _request || request;
         const [context, dataType] = requestData;
         const contentType = nxContentType(dataType);
-        const apiPath = _item[1].indexOf(SEPARATOR) > -1 ? nxTmpl(_item[1], data) : _item[1];
+        const apiPath = _item[1].indexOf('{') > -1 ? nxTmpl(_item[1], data) : _item[1];
         const options = nx.mix({ headers: { 'Content-Type': contentType } }, inOptions);
 
         return inHttp[action](

@@ -24,8 +24,6 @@ var _nextContentType2 = _interopRequireDefault(_nextContentType);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var SEPARATOR = '{';
-
 function httpRestConfg(inApiContext, inHttp, inConfig) {
   var host = inConfig.host,
       request = inConfig.request,
@@ -49,7 +47,7 @@ function httpRestConfg(inApiContext, inHttp, inConfig) {
             dataType = _requestData[1];
 
         var contentType = (0, _nextContentType2.default)(dataType);
-        var apiPath = _item[1].indexOf(SEPARATOR) > -1 ? (0, _nextTmpl2.default)(_item[1], data) : _item[1];
+        var apiPath = _item[1].indexOf('{') > -1 ? (0, _nextTmpl2.default)(_item[1], data) : _item[1];
         var options = _nextJsCore2.default.mix({ headers: { 'Content-Type': contentType } }, inOptions);
 
         return inHttp[action]('' + (_url || baseUrl) + context + apiPath, _nextDataTransform2.default[dataType](data), options);
