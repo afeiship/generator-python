@@ -9,7 +9,12 @@ describe('test group', () => {
       get: function(inUrl, inData, inOptions) {
         return inUrl;
       },
-      post: function(inUrl, inData, inOptions) {},
+      post: function(inUrl, inData, inOptions) {
+        return {
+          url: inUrl,
+          data: inData
+        };
+      },
       put: function(inUrl, inData, inOptions) {},
       delete: function(inUrl, inData, inOptions) {
         return {
@@ -27,7 +32,6 @@ describe('test group', () => {
       {
         items: {
           upload: ['post', '/system/upload'],
-          login: ['post', '/auth/admin/signin'],
           banner_delete: ['delete', '/system/banner/{id}'],
           banner_update: ['put', '/system/banner/{id}']
         }
@@ -38,7 +42,6 @@ describe('test group', () => {
   test('all the apiService attach to context:', () => {
     httpRestConfig(apiService, http, config);
     expect(typeof apiService.upload).toBe('function');
-    expect(typeof apiService.login).toBe('function');
     expect(typeof apiService.banner_delete).toBe('function');
     expect(typeof apiService.banner_update).toBe('function');
   });
@@ -46,7 +49,12 @@ describe('test group', () => {
   test('params data url json contentType', () => {
     httpRestConfig(apiService, http, config);
     const apiDelete = apiService.banner_delete({ id: 123 });
+    const apiUpload = apiService.upload({ filename: 'test.txt' });
+    // params:
     expect(apiDelete.url).toBe('http://dev.demo.com/api/vi/system/banner/123');
     expect(apiDelete.data).toEqual(JSON.stringify({ id: 123 }));
+    // normal:
+    expect(apiUpload.url).toBe('http://dev.demo.com/api/vi/system/upload');
+    expect(apiUpload.data).toEqual(JSON.stringify({ filename: 'test.txt' }));
   });
 });
