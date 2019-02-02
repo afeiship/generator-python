@@ -1,13 +1,24 @@
 var httpRestConfig = require('../dist');
 
 describe('test group', () => {
-  const apiService = {};
-  const http = {
-    get: function() {},
-    post: function() {},
-    put: function() {},
-    delete: function() {}
-  };
+  let apiService, http;
+
+  beforeEach(function() {
+    apiService = {};
+    http = {
+      get: function(inUrl, inData, inOptions) {
+        return inUrl;
+      },
+      post: function(inUrl, inData, inOptions) {},
+      put: function(inUrl, inData, inOptions) {},
+      delete: function(inUrl, inData, inOptions) {
+        return {
+          url: inUrl,
+          data: inData
+        };
+      }
+    };
+  });
 
   const config = {
     host: 'http://dev.demo.com',
@@ -26,10 +37,16 @@ describe('test group', () => {
 
   test('all the apiService attach to context:', () => {
     httpRestConfig(apiService, http, config);
-
     expect(typeof apiService.upload).toBe('function');
     expect(typeof apiService.login).toBe('function');
     expect(typeof apiService.banner_delete).toBe('function');
     expect(typeof apiService.banner_update).toBe('function');
+  });
+
+  test('params data url json contentType', () => {
+    httpRestConfig(apiService, http, config);
+    const apiDelete = apiService.banner_delete({ id: 123 });
+    expect(apiDelete.url).toBe('http://dev.demo.com/api/vi/system/banner/123');
+    expect(apiDelete.data).toEqual(JSON.stringify({ id: 123 }));
   });
 });
