@@ -72,12 +72,12 @@ export default {
 
 ## usage:
 ```js
-import httpConfig from 'http-rest-config';
+import httpRestConfig from 'http-rest-config';
 
 export default nx.declare({
   statics: {
     init () {
-      httpConfig(this, MyHttp, APIS);
+      httpRestConfig(this, MyHttp, APIS);
     }
   }
 });
