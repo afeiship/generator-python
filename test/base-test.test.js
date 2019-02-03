@@ -35,6 +35,12 @@ describe('test group', () => {
           banner_delete: ['delete', '/system/banner/{id}'],
           banner_update: ['put', '/system/banner/{id}']
         }
+      },
+      {
+        host: 'http://dev2.demo.com',
+        items: {
+          login: ['post', '/system/login']
+        }
       }
     ]
   };
@@ -56,5 +62,13 @@ describe('test group', () => {
     // normal:
     expect(apiUpload.url).toBe('http://dev.demo.com/api/vi/system/upload');
     expect(apiUpload.data).toEqual(JSON.stringify({ filename: 'test.txt' }));
+  });
+
+  test('items can change host', () => {
+    httpRestConfig(apiService, http, config);
+    const apiUpload = apiService.upload();
+    const apiLogin = apiService.login();
+    expect(apiLogin.url).toBe('http://dev2.demo.com/api/vi/system/login');
+    expect(apiUpload.url).toBe('http://dev.demo.com/api/vi/system/upload');
   });
 });
