@@ -6,19 +6,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _nextJsCore = require('next-js-core2');
+var _nextJsCore = require('@feizheng/next-js-core2');
 
 var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
 
-var _nextDataTransform = require('next-data-transform');
+var _nextDataTransform = require('@feizheng/next-data-transform');
 
 var _nextDataTransform2 = _interopRequireDefault(_nextDataTransform);
 
-var _nextTmpl = require('next-tmpl');
+var _nextTmpl = require('@feizheng/next-tmpl');
 
 var _nextTmpl2 = _interopRequireDefault(_nextTmpl);
 
-var _nextContentType = require('next-content-type');
+var _nextContentType = require('@feizheng/next-content-type');
 
 var _nextContentType2 = _interopRequireDefault(_nextContentType);
 

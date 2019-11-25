@@ -1,7 +1,7 @@
-import nx from 'next-js-core2';
-import NxDataTransform from 'next-data-transform';
-import nxTmpl from 'next-tmpl';
-import nxContentType from 'next-content-type';
+import nx from '@feizheng/next-js-core2';
+import NxDataTransform from '@feizheng/next-data-transform';
+import nxTmpl from '@feizheng/next-tmpl';
+import nxContentType from '@feizheng/next-content-type';
 
 function httpRestConfg(inApiContext, inHttp, inConfig) {
   const { host, request, items } = inConfig;

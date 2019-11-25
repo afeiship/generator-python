@@ -1,5 +1,5 @@
 {
-  "name": "http-rest-config",
+  "name": "@feizheng/http-rest-config",
   "version": "2.0.0",
   "description": "A simple rest config for react project.",
   "main": "dist/index.js",
@@ -12,6 +12,7 @@
     "test": "jest"
   },
   "devDependencies": {
+    "@feizheng/rake-git": "^1.2.1",
     "babel": "^6.5.2",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.0.0",
@@ -26,13 +27,12 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.0.0",
-    "jest": "^23.6.0",
-    "root-path": "afeiship/root-path"
+    "jest": "^24.9.0"
   },
   "dependencies": {
-    "next-content-type": "github:afeiship/next-content-type",
-    "next-data-transform": "github:afeiship/next-data-transform",
-    "next-js-core2": "github:afeiship/next-js-core2",
-    "next-tmpl": "github:afeiship/next-tmpl"
+    "@feizheng/next-content-type": "^1.0.0",
+    "@feizheng/next-data-transform": "^1.0.0",
+    "@feizheng/next-js-core2": "^2.0.2",
+    "@feizheng/next-tmpl": "^1.0.0"
   }
 }
