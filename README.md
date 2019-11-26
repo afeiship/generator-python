@@ -1,10 +1,15 @@
 # http-rest-config
 > A simple rest config for react project.
 
+## installation
+```shell
+npm install -S @feizheng/http-rest-config
+```
+
 ## expamle http:
 ```js
-import nx from 'next-js-core2';
-import NxAxios from 'next-axios';
+import nx from '@feizheng/next-js-core2';
+import NxAxios from '@feizheng/next-axios';
 const MyHttp = nx.declare({
   extends: NxAxios,
   methods: {
@@ -72,7 +77,7 @@ export default {
 
 ## usage:
 ```js
-import httpRestConfig from 'http-rest-config';
+import httpRestConfig from '@feizheng/http-rest-config';
 
 export default nx.declare({
   statics: {
