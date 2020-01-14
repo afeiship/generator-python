@@ -6,3 +6,12 @@ static
 .gitignore
 yarn.lock
 test
+
+
+__tests__
+docs
+.editorconfig
+.prettierrc
+Gemfile
+LICENSE.txt
+Rakefile
