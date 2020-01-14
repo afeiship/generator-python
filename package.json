@@ -34,5 +34,8 @@
     "@feizheng/next-data-transform": "^1.0.0",
     "@feizheng/next-js-core2": "^2.0.2",
     "@feizheng/next-tmpl": "^1.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
