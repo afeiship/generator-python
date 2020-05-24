@@ -1,36 +1,45 @@
-import nx from '@feizheng/next-js-core2';
-import NxDataTransform from '@feizheng/next-data-transform';
-import nxTmpl from '@feizheng/next-tmpl';
-import nxContentType from '@feizheng/next-content-type';
 
-function httpRestConfg(inApiContext, inHttp, inConfig) {
-  const { host, request, items } = inConfig;
-  const baseUrl = host || `//${location.host}`;
+(function () {
+  var global = global || this || window || Function('return this')();
+  var nx = global.nx || require('@feizheng/next-js-core2');
+  var NxDataTransform = nx.DataTransform || require('@feizheng/next-data-transform');
+  var nxTmpl = nx.tmpl || require('@feizheng/next-tmpl');
+  var nxContentType = nx.contentType || require('@feizheng/next-content-type');
 
-  items.forEach(function(item) {
-    const _request = item.request;
-    const _items = item.items;
-    const _url = item.host;
+  function httpRestConfg(inApiContext, inHttp, inConfig) {
+    var host = inConfig.host;
+    var request = inConfig.request;
+    var items = inConfig.items;
+    var baseUrl = host || '//' + location.host;
 
-    nx.each(_items, function(key, _item) {
-      inApiContext[key] = function(inData, inOptions) {
-        const data = Array.isArray(inData) ? nx.mix.apply(nx, inData) : inData;
-        const action = String(_item[0]).toLowerCase();
-        const requestData = _request || request;
-        const [context, dataType] = requestData;
-        const contentType = nxContentType(dataType);
-        const apiPath = nxTmpl(_item[1], data);
-        const options = nx.mix({ headers: { 'Content-Type': contentType } }, _item[2], inOptions);
+    items.forEach(function (item) {
+      var _request = item.request;
+      var _items = item.items;
+      var _url = item.host;
 
-        return inHttp[action](
-          `${_url || baseUrl}${context}${apiPath}`,
-          NxDataTransform[dataType](data),
-          options
-        );
-      };
+      nx.each(_items, function (key, _item) {
+        inApiContext[key] = function (inData, inOptions) {
+          var data = Array.isArray(inData) ? nx.mix.apply(nx, inData) : inData;
+          var action = String(_item[0]).toLowerCase();
+          var requestData = _request || request;
+          var context = requestData[0];
+          var dataType = requestData[1];
+          var contentType = nxContentType(dataType);
+          var apiPath = nxTmpl(_item[1], data);
+          var options = nx.mix({ headers: { 'Content-Type': contentType } }, _item[2], inOptions);
+
+          return inHttp[action](
+            (_url || baseUrl) + context + apiPath,
+            NxDataTransform[dataType](data),
+            options
+          );
+        };
+      });
     });
-  });
-}
+  }
 
-module.exports = httpRestConfg;
-export default httpRestConfg;
+
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = httpRestConfg;
+  }
+})();
