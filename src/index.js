@@ -10,7 +10,7 @@
     var host = inConfig.host;
     var request = inConfig.request;
     var items = inConfig.items;
-    var baseUrl = host || '//' + location.host;
+    var baseUrl = host || ('//' + location.host);
 
     items.forEach(function (item) {
       var _request = item.request;

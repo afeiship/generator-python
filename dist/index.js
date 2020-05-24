@@ -3,7 +3,7 @@
  * description: A simple rest config for react project.
  * homepage: 
  * version: 2.4.0
- * date: 2020-05-24T04:48:54.667Z
+ * date: 2020-05-24T04:51:17.520Z
  * license: MIT
  */
 
@@ -19,7 +19,7 @@
     var host = inConfig.host;
     var request = inConfig.request;
     var items = inConfig.items;
-    var baseUrl = host || '//' + location.host;
+    var baseUrl = host || ('//' + location.host);
 
     items.forEach(function (item) {
       var _request = item.request;
