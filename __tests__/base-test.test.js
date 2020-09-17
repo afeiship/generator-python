@@ -1,22 +1,22 @@
-var httpRestConfig = require('../dist');
+var httpRestConfig = require('../src');
 
 describe('test group', () => {
   let apiService, http;
 
-  beforeEach(function() {
+  beforeEach(function () {
     apiService = {};
     http = {
-      get: function(inUrl, inData, inOptions) {
+      get: function (inUrl, inData, inOptions) {
         return inUrl;
       },
-      post: function(inUrl, inData, inOptions) {
+      post: function (inUrl, inData, inOptions) {
         return {
           url: inUrl,
           data: inData
         };
       },
-      put: function(inUrl, inData, inOptions) {},
-      delete: function(inUrl, inData, inOptions) {
+      put: function (inUrl, inData, inOptions) {},
+      delete: function (inUrl, inData, inOptions) {
         return {
           url: inUrl,
           data: inData
@@ -38,6 +38,13 @@ describe('test group', () => {
       },
       {
         host: 'http://dev2.demo.com',
+        items: {
+          login: ['post', '/system/login']
+        }
+      },
+      {
+        host: 'http://dev3.demo.com',
+        prefix: 'dev3_',
         items: {
           login: ['post', '/system/login']
         }
@@ -70,5 +77,14 @@ describe('test group', () => {
     const apiLogin = apiService.login();
     expect(apiLogin.url).toBe('http://dev2.demo.com/api/vi/system/login');
     expect(apiUpload.url).toBe('http://dev.demo.com/api/vi/system/upload');
+  });
+
+  test('prefix support', () => {
+    httpRestConfig(apiService, http, config);
+    const apiLogin = apiService.dev3_login({ abc: 111});
+    expect(apiLogin).toEqual({
+      url: 'http://dev3.demo.com/api/vi/system/login',
+      data: JSON.stringify({ abc: 111 })
+    });
   });
 });

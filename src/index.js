@@ -15,10 +15,12 @@
     items.forEach(function (item) {
       var _request = item.request;
       var _items = item.items;
-      var _url = item.host;
+      var _prefix = item.prefix || '';
+      var _host = item.host;
 
       nx.each(_items, function (key, _item) {
-        inApiContext[key] = function (inData, inOptions) {
+        var apiKey = _prefix + key;
+        inApiContext[apiKey] = function (inData, inOptions) {
           var data = Array.isArray(inData) ? nx.mix.apply(nx, inData) : inData;
           var action = String(_item[0]).toLowerCase();
           var requestData = _request || request;
@@ -29,7 +31,7 @@
           var options = nx.mix({ headers: { 'Content-Type': contentType } }, _item[2], inOptions);
 
           return inHttp[action](
-            (_url || baseUrl) + context + apiPath,
+            (_host || baseUrl) + context + apiPath,
             NxDataTransform[dataType](data),
             options
           );

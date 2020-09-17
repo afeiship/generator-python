@@ -2,8 +2,8 @@
  * name: @feizheng/http-rest-config
  * description: A simple rest config for react project.
  * homepage: 
- * version: 2.4.0
- * date: 2020-05-24T04:51:17.520Z
+ * version: 2.5.0
+ * date: 2020-09-17T09:01:43.464Z
  * license: MIT
  */
 
@@ -24,10 +24,12 @@
     items.forEach(function (item) {
       var _request = item.request;
       var _items = item.items;
-      var _url = item.host;
+      var _prefix = item.prefix || '';
+      var _host = item.host;
 
       nx.each(_items, function (key, _item) {
-        inApiContext[key] = function (inData, inOptions) {
+        var apiKey = _prefix + key;
+        inApiContext[apiKey] = function (inData, inOptions) {
           var data = Array.isArray(inData) ? nx.mix.apply(nx, inData) : inData;
           var action = String(_item[0]).toLowerCase();
           var requestData = _request || request;
@@ -38,7 +40,7 @@
           var options = nx.mix({ headers: { 'Content-Type': contentType } }, _item[2], inOptions);
 
           return inHttp[action](
-            (_url || baseUrl) + context + apiPath,
+            (_host || baseUrl) + context + apiPath,
             NxDataTransform[dataType](data),
             options
           );
