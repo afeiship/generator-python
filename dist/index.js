@@ -2,11 +2,10 @@
  * name: @feizheng/http-rest-config
  * description: A simple rest config for react project.
  * homepage: 
- * version: 2.5.0
- * date: 2020-09-17T09:01:43.464Z
+ * version: 2.5.1
+ * date: 2020-09-17T10:18:00.844Z
  * license: MIT
  */
-
 
 (function () {
   var global = global || this || window || Function('return this')();
@@ -19,12 +18,13 @@
     var host = inConfig.host;
     var request = inConfig.request;
     var items = inConfig.items;
-    var baseUrl = host || ('//' + location.host);
+    var baseUrl = host || '//' + location.host;
+    var prefix = inConfig.prefix || '';
 
     items.forEach(function (item) {
       var _request = item.request;
       var _items = item.items;
-      var _prefix = item.prefix || '';
+      var _prefix = item.prefix || prefix;
       var _host = item.host;
 
       nx.each(_items, function (key, _item) {
@@ -48,7 +48,6 @@
       });
     });
   }
-
 
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = httpRestConfg;

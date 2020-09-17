@@ -1,4 +1,3 @@
-
 (function () {
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('@feizheng/next-js-core2');
@@ -10,12 +9,13 @@
     var host = inConfig.host;
     var request = inConfig.request;
     var items = inConfig.items;
-    var baseUrl = host || ('//' + location.host);
+    var baseUrl = host || '//' + location.host;
+    var prefix = inConfig.prefix || '';
 
     items.forEach(function (item) {
       var _request = item.request;
       var _items = item.items;
-      var _prefix = item.prefix || '';
+      var _prefix = item.prefix || prefix;
       var _host = item.host;
 
       nx.each(_items, function (key, _item) {
@@ -39,7 +39,6 @@
       });
     });
   }
-
 
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = httpRestConfg;
