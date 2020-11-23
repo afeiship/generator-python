@@ -3,13 +3,13 @@
 
 ## installation
 ```shell
-npm install -S @feizheng/http-rest-config
+npm install -S @jswork/http-rest-config
 ```
 
 ## expamle http:
 ```js
-import nx from '@feizheng/next-js-core2';
-import NxAxios from '@feizheng/next-axios';
+import nx from '@jswork/next-js-core2';
+import NxAxios from '@jswork/next-axios';
 const MyHttp = nx.declare({
   extends: NxAxios,
   methods: {
@@ -77,7 +77,7 @@ export default {
 
 ## usage:
 ```js
-import httpRestConfig from '@feizheng/http-rest-config';
+import httpRestConfig from '@jswork/http-rest-config';
 
 export default nx.declare({
   statics: {
