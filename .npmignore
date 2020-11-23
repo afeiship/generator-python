@@ -15,3 +15,4 @@ docs
 Gemfile
 LICENSE.txt
 Rakefile
+.release-it.json

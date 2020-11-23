@@ -1,6 +1,6 @@
 {
-  "name": "@feizheng/http-rest-config",
-  "version": "2.5.1",
+  "name": "@jswork/http-rest-config",
+  "version": "1.0.0",
   "description": "A simple rest config for react project.",
   "main": "dist/index.js",
   "repository": "git@github.com:afeiship/http-rest-config.git",
@@ -8,34 +8,37 @@
   "license": "MIT",
   "scripts": {
     "build": "gulp",
-    "test": "jest"
+    "test": "jest",
+    "release": "release-it"
   },
   "devDependencies": {
-    "@feizheng/gulp-pkg-header": "^1.0.4",
-    "del": "^5.1.0",
+    "@jswork/gulp-pkg-header": "^1.0.3",
+    "del": "^6.0.0",
     "express": "^4.17.1",
     "gulp": "^4.0.2",
     "gulp-debug": "^4.0.0",
     "gulp-header": "^2.0.9",
     "gulp-ignore": "^3.0.0",
-    "gulp-load-plugins": "^2.0.4",
+    "gulp-load-plugins": "^2.0.5",
     "gulp-rename": "^2.0.0",
     "gulp-size": "^3.0.0",
-    "gulp-sourcemaps": "^2.6.5",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
-    "prettier": "^2.1.2",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.0",
+    "release-it": "^14.2.1",
+    "uglify-js": "3.12.0",
     "uglify-save-license": "^0.4.1",
-    "uglify-js": "3.10.4",
-    "yargs": "^16.0.3",
-    "jest": "^26.4.2"
+    "yargs": "^16.1.1"
   },
   "dependencies": {
-    "@feizheng/next-content-type": "^1.1.4",
-    "@feizheng/next-data-transform": "^1.1.2",
-    "@feizheng/next-js-core2": "^2.6.0",
-    "@feizheng/next-tmpl": "^1.0.4"
+    "@jswork/next": "^1.0.2",
+    "@jswork/next-content-type": "^1.0.0",
+    "@jswork/next-data-transform": "^1.0.0",
+    "@jswork/next-tmpl": "^1.0.0"
   },
   "publishConfig": {
+    "access": "public",
     "registry": "https://registry.npmjs.org/"
   }
 }

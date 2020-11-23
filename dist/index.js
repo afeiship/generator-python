@@ -1,18 +1,18 @@
 /*!
- * name: @feizheng/http-rest-config
+ * name: @jswork/http-rest-config
  * description: A simple rest config for react project.
  * homepage: 
- * version: 2.5.1
- * date: 2020-09-17T10:18:00.844Z
+ * version: 1.0.0
+ * date: 2020-11-23 09:05:44
  * license: MIT
  */
 
 (function () {
   var global = global || this || window || Function('return this')();
-  var nx = global.nx || require('@feizheng/next-js-core2');
-  var NxDataTransform = nx.DataTransform || require('@feizheng/next-data-transform');
-  var nxTmpl = nx.tmpl || require('@feizheng/next-tmpl');
-  var nxContentType = nx.contentType || require('@feizheng/next-content-type');
+  var nx = global.nx || require('@jswork/next');
+  var NxDataTransform = nx.DataTransform || require('@jswork/next-data-transform');
+  var nxTmpl = nx.tmpl || require('@jswork/next-tmpl');
+  var nxContentType = nx.contentType || require('@jswork/next-content-type');
 
   function httpRestConfg(inApiContext, inHttp, inConfig) {
     var host = inConfig.host;
