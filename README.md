@@ -93,6 +93,9 @@ export default nx.declare({
 });
 ```
 
+## todos
+- [ ] 删除 `body` 中的多余参数
+
 ## license
 Code released under [the MIT license](https://github.com/afeiship/http-rest-config/blob/master/LICENSE.txt).
 
