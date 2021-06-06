@@ -1,6 +1,6 @@
 {
   "name": "@jswork/http-rest-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple rest config for react project.",
   "main": "dist/index.js",
   "repository": "git@github.com:afeiship/http-rest-config.git",
@@ -45,6 +45,7 @@
     "http",
     "config",
     "curd",
-    "rest"
+    "rest",
+    "schema"
   ]
 }
