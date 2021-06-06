@@ -4,6 +4,7 @@
   },
   "hooks": {
     "after:init": [
+      "spj",
       "npm run test",
       "t2k"
     ],
