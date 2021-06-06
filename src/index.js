@@ -25,7 +25,7 @@
           var action = String(_item[0]).toLowerCase();
           var requestData = _request || request;
           var context = requestData[0];
-          var dataType = inOptions.dataType || requestData[1];
+          var dataType = nx.get(inOptions, 'dataType', requestData[1]);
           var contentType = nxContentType(dataType);
           var apiPath = nxTmpl(_item[1], data);
           var options = nx.mix({ headers: { 'Content-Type': contentType } }, _item[2], inOptions);
