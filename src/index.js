@@ -30,7 +30,7 @@
           var dataType = nx.get(options, 'dataType', requestData[1]);
 
           // when headers is null
-          options.headers = options.headers || {};
+          nx.mix(options, { headers: options.headers || {}, dataType: dataType });
           nx.mix(options.headers, { 'Content-Type': nxContentType(dataType) });
 
           return inHttp[action](
