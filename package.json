@@ -1,6 +1,6 @@
 {
   "name": "@jswork/http-rest-config",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple rest config for react project.",
   "keywords": [
     "http",
