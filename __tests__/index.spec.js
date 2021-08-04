@@ -7,7 +7,7 @@ describe('test group', () => {
     apiService = {};
     http = {
       get: function (inUrl, inData, inOptions) {
-        return inUrl;
+        return { url: inUrl, data: inData };
       },
       post: function (inUrl, inData, inOptions) {
         return {
@@ -39,7 +39,8 @@ describe('test group', () => {
       {
         host: 'http://dev2.demo.com',
         items: {
-          login: ['post', '/system/login']
+          login: ['post', '/system/login'],
+          profile: ['get', '/system/profile']
         }
       },
       {
@@ -81,10 +82,19 @@ describe('test group', () => {
 
   test('prefix support', () => {
     httpRestConfig(apiService, http, config);
-    const apiLogin = apiService.dev3_login({ abc: 111});
+    const apiLogin = apiService.dev3_login({ abc: 111 });
     expect(apiLogin).toEqual({
       url: 'http://dev3.demo.com/api/vi/system/login',
       data: JSON.stringify({ abc: 111 })
+    });
+  });
+
+  test('get with qs in url should not stringify data', () => {
+    httpRestConfig(apiService, http, config);
+    const apiLogin = apiService.profile({ page: 1, size: 10 });
+    expect(apiLogin).toEqual({
+      url: 'http://dev2.demo.com/api/vi/system/profile',
+      data: { page: 1, size: 10 }
     });
   });
 });

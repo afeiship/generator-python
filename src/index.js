@@ -28,16 +28,13 @@
           var apiPath = nxTmpl(_item[1], data);
           var options = nx.mix(null, _item[2], inOptions);
           var dataType = nx.get(options, 'dataType', requestData[1]);
+          var params = action === 'get' ? data : NxDataTransform[dataType](data);
 
           // when headers is null
           nx.mix(options, { headers: options.headers || {}, dataType: dataType });
           nx.mix(options.headers, { 'Content-Type': nxContentType(dataType) });
 
-          return inHttp[action](
-            (_host || baseUrl) + context + apiPath,
-            NxDataTransform[dataType](data),
-            options
-          );
+          return inHttp[action]((_host || baseUrl) + context + apiPath, params, options);
         };
       });
     });
