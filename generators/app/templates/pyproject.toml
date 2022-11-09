@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "<%= project_name =>"
+name = "<%= project_name %>"
 version = "0.1.0"
-description = "<%= description =>"
+description = "<%= description %>"
 authors = ["afeiship <1290657123@qq.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "<%= project_name =>"}]
+packages = [{include = "<%- ctx.underscored(project_name) %>"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

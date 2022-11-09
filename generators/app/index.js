@@ -13,9 +13,21 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copyTpl(globby.sync(this.templatePath('**'), { dot: true }), this.destinationPath(), {
-      ...this.props,
-      ctx: yoHelper.ctx,
-    });
+    this.fs.copyTpl(
+      globby.sync(this.templatePath('**'), { dot: true }),
+      this.destinationPath(),
+      {
+        ...this.props,
+        ctx: yoHelper.ctx,
+      },
+      null,
+      {
+        processDestinationPath: (dest) => {
+          const appTmpl = nx.underscored(this.props.project_name);
+          console.log('appTmpl: ', appTmpl);
+          return dest.replace('tmpl', appTmpl);
+        }
+      }
+    );
   }
 };
